@@ -7,17 +7,17 @@ interface Message {
 }
 
 interface SocketController {
-    socket: SocketIOClient.Socket;
+    instance: SocketIOClient.Socket;
     sendMessage: (message: Message) => void;
     unsubscribe: (userId: string) => void;
     disconnect: () => void;
 }
 
 export class Socket implements SocketController {
-    public socket: SocketIOClient.Socket;
+    public instance: SocketIOClient.Socket;
 
     constructor() {
-        this.socket = io('http://localhost:4000', {
+        this.instance = io('http://localhost:4000', {
             transports: ['websocket'],
             upgrade: false,
             query: {
@@ -25,28 +25,28 @@ export class Socket implements SocketController {
             },
         });
 
-        this.socket.on('connect', () => {
+        this.instance.on('connect', () => {
             console.log('connected');
         });
     }
 
     join(userId: string) {
-        this.socket.emit('join', { userId });
+        this.instance.emit('join', { userId });
     }
 
     sendMessage(message: Message) {
-        this.socket.emit('add-message', message);
+        this.instance.emit('add-message', message);
     }
 
     chatList(userId: string) {
-        this.socket.emit('chat-list', { userId });
+        this.instance.emit('chat-list', { userId });
     }
 
     unsubscribe(userId: string) {
-        this.socket.emit('leaveChat', { userId });
+        this.instance.emit('leaveChat', { userId });
     }
 
     disconnect() {
-        this.socket.disconnect();
+        this.instance.disconnect();
     }
 }
