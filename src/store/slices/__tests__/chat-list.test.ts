@@ -66,16 +66,17 @@ describe('Chat List slice', () => {
         expect(result.chatList[0].messages).toHaveLength(2);
     });
 
-    test(`joinAction should set property 'joined' property to true`, () => {
+    test(`joinAction should set property 'joined' property to true and set userId prop`, () => {
         const initialState = {
             joined: false,
         } as Chat.State;
 
         const result = chatListReducer(
             initialState,
-            joinAction(),
+            joinAction('foo'),
         );
 
         expect(result.joined).toBeTruthy();
+        expect(result.userId).toBe('foo');
     });
 });

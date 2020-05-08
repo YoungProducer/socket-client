@@ -18,12 +18,14 @@ export namespace Chat {
     export interface State {
         chatList: Chat[];
         joined: boolean;
+        userId: string;
     }
 }
 
 const initialState: Chat.State = {
     chatList: [],
     joined: false,
+    userId: null,
 };
 
 const chat = createSlice({
@@ -36,6 +38,7 @@ const chat = createSlice({
         ) => ({
             ...state,
             joined: true,
+            userId: payload,
         }),
         setChatListAction: (
             state: Chat.State,
