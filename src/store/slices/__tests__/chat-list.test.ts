@@ -2,14 +2,14 @@ import {
     chatListReducer,
     addMessageAction,
     setChatListAction,
-    ChatList,
-} from '../chat-list';
+    Chat,
+} from '../chat';
 
 describe('Chat List slice', () => {
     test('setChatListAciton should correct set chatList property', () => {
         const initialState = {
             chatList: [],
-        } as ChatList.State;
+        } as Chat.State;
 
         const result = chatListReducer(
             initialState,
@@ -29,7 +29,7 @@ describe('Chat List slice', () => {
     test(`addMessageAction should create new chat if chat doesn't exist`, () => {
         const initialState = {
             chatList: [],
-        } as ChatList.State;
+        } as Chat.State;
 
         const result = chatListReducer(
             initialState,
@@ -52,7 +52,7 @@ describe('Chat List slice', () => {
                 sender: 'foo',
                 messages: ['123'],
             }],
-        } as ChatList.State;
+        } as Chat.State;
 
         const result = chatListReducer(
             initialState,

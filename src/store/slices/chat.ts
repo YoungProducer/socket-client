@@ -1,27 +1,25 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export namespace Chat {
-    export interface Message {
-        sender: string;
-        body: string;
-    }
-}
-
 export interface Chat {
     sender: string;
     messages: string[];
 }
 
-export namespace ChatList {
+export namespace Chat {
+    export interface Message {
+        sender: string;
+        body: string;
+    }
+
     export type SetPayload = Chat[];
-    export type AddPayload = Chat.Message;
+    export type AddPayload = Message;
 
     export interface State {
         chatList: Chat[];
     }
 }
 
-const initialState: ChatList.State = {
+const initialState: Chat.State = {
     chatList: [],
 };
 
@@ -30,14 +28,14 @@ const chatList = createSlice({
     name: 'Chat',
     reducers: {
         setChatListAction: (
-            state: ChatList.State,
-            { payload }: PayloadAction<ChatList.SetPayload>,
+            state: Chat.State,
+            { payload }: PayloadAction<Chat.SetPayload>,
         ) => ({
             ...state,
             chatList: payload,
         }),
         addMessageAction: (
-            state: ChatList.State,
+            state: Chat.State,
             { payload }: PayloadAction<Chat.Message>,
         ) => {
             const isChatExist = state.chatList.some(chat =>
