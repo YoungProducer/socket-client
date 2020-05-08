@@ -26,7 +26,7 @@ const initialState: Chat.State = {
     joined: false,
 };
 
-const chatList = createSlice({
+const chat = createSlice({
     initialState,
     name: 'Chat',
     reducers: {
@@ -85,6 +85,6 @@ export const {
     joinAction,
     addMessageAction,
     setChatListAction,
-} = chatList.actions;
+} = chat.actions;
 
-export const chatListReducer = chatList.reducer;
+export const chatListReducer = chat.reducer;
