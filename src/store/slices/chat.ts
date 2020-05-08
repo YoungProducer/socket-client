@@ -13,20 +13,30 @@ export namespace Chat {
 
     export type SetPayload = Chat[];
     export type AddPayload = Message;
+    export type JoinPayload = string;
 
     export interface State {
         chatList: Chat[];
+        joined: boolean;
     }
 }
 
 const initialState: Chat.State = {
     chatList: [],
+    joined: false,
 };
 
 const chatList = createSlice({
     initialState,
     name: 'Chat',
     reducers: {
+        joinAction: (
+            state: Chat.State,
+            { payload }: PayloadAction<Chat.JoinPayload>,
+        ) => ({
+            ...state,
+            joined: true,
+        }),
         setChatListAction: (
             state: Chat.State,
             { payload }: PayloadAction<Chat.SetPayload>,
@@ -72,6 +82,7 @@ const chatList = createSlice({
 });
 
 export const {
+    joinAction,
     addMessageAction,
     setChatListAction,
 } = chatList.actions;

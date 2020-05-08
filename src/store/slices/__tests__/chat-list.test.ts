@@ -2,6 +2,7 @@ import {
     chatListReducer,
     addMessageAction,
     setChatListAction,
+    joinAction,
     Chat,
 } from '../chat';
 
@@ -63,5 +64,18 @@ describe('Chat List slice', () => {
         );
 
         expect(result.chatList[0].messages).toHaveLength(2);
+    });
+
+    test(`joinAction should set property 'joined' property to true`, () => {
+        const initialState = {
+            joined: false,
+        } as Chat.State;
+
+        const result = chatListReducer(
+            initialState,
+            joinAction(),
+        );
+
+        expect(result.joined).toBeTruthy();
     });
 });
