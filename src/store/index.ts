@@ -4,7 +4,9 @@ import {
 } from '@reduxjs/toolkit';
 import { createLogger } from 'redux-logger';
 
-const createStore = (rootReducer = {}) => {
+import { rootReducer } from './slices';
+
+const createStore = (reducer = {}) => {
     const defaultMiddleware = getDefaultMiddleware({
         thunk: true,
         immutableCheck: true,
@@ -23,10 +25,10 @@ const createStore = (rootReducer = {}) => {
 
     return configureStore({
         middleware,
-        reducer: rootReducer,
+        reducer,
     });
 };
 
-export const store = createStore();
+export const store = createStore(rootReducer);
 
 export type Store = typeof store;
