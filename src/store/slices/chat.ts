@@ -90,4 +90,4 @@ export const {
     setChatListAction,
 } = chat.actions;
 
-export const chatListReducer = chat.reducer;
+export const chatReducer = chat.reducer;

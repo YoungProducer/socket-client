@@ -1,9 +1,9 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-import { chatListReducer } from './chat';
+import { chatReducer } from './chat';
 
 export const rootReducer = combineReducers({
-    chatList: chatListReducer,
+    chat: chatReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

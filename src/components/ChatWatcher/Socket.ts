@@ -6,14 +6,14 @@ interface Message {
     body: string;
 }
 
-interface SocketController {
+interface ChatSocketController {
     instance: SocketIOClient.Socket;
     sendMessage: (message: Message) => void;
     unsubscribe: (userId: string) => void;
     disconnect: () => void;
 }
 
-export class Socket implements SocketController {
+export class ChatSocket implements ChatSocketController {
     public instance: SocketIOClient.Socket;
 
     constructor() {
