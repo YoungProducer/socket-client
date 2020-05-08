@@ -741,7 +741,7 @@
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.5.tgz#527d20ef68571a4af02ed74350164e7a67544860"
   integrity sha512-wLD/Aq2VggCJXSjxEwrMafIP51Z+13H78nXIX0ABEuIGhmB5sNGbR113MOKo+yfw+RDo1ZU3DM6yfnnRF/+ouw==
 
-"@types/hoist-non-react-statics@^3.0.1":
+"@types/hoist-non-react-statics@^3.0.1", "@types/hoist-non-react-statics@^3.3.0":
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
   integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
@@ -847,6 +847,16 @@
   integrity sha512-VCdDCwSsr1MT2frsVl5p8qH+LWwUGzsaNtGkEQekHviZqK0dmTbiIp2Pzfb8lTkH4oTE2JtBbWnbuM6B4FH80A==
   dependencies:
     react-dropzone "*"
+
+"@types/react-redux@^7.1.8":
+  version "7.1.8"
+  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-7.1.8.tgz#3631feb559f7858d6ad9eea1d6ef41fa64fe7205"
+  integrity sha512-kpplH7Wg2SYU00sZVT98WBN0ou6QKrYcShRaW+5Vpe5l7bluKWJbWmAL+ieiso07OQzpcP5i1PeY3690640ZWg==
+  dependencies:
+    "@types/hoist-non-react-statics" "^3.3.0"
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
+    redux "^4.0.0"
 
 "@types/react-router-dom@^5.1.0":
   version "5.1.5"
@@ -9762,6 +9772,17 @@ react-reconciler@^0.24.0:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     scheduler "^0.18.0"
+
+react-redux@^7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.2.0.tgz#f970f62192b3981642fec46fd0db18a074fe879d"
+  integrity sha512-EvCAZYGfOLqwV7gh849xy9/pt55rJXPwmYvI4lilPM5rUT/1NxuuN59ipdBksRVSvz0KInbPnp4IfoXJXCqiDA==
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    hoist-non-react-statics "^3.3.0"
+    loose-envify "^1.4.0"
+    prop-types "^15.7.2"
+    react-is "^16.9.0"
 
 react-router-dom@^5.0.0:
   version "5.1.2"
