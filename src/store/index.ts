@@ -4,7 +4,9 @@ import {
 } from '@reduxjs/toolkit';
 import { createLogger } from 'redux-logger';
 
+import { middlewares } from './middlewares';
 import { rootReducer } from './slices';
+import { joinAction } from './slices/chat';
 
 const createStore = (reducer = {}) => {
     const defaultMiddleware = getDefaultMiddleware({
@@ -21,6 +23,7 @@ const createStore = (reducer = {}) => {
     const middleware = [
         ...defaultMiddleware,
         logger,
+        ...middlewares,
     ];
 
     return configureStore({
