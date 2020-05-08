@@ -5,8 +5,8 @@ import { ChatListProps } from './container';
 export const ChatList = ({ senders }: ChatListProps) => {
     return (
         <ul>
-            { senders.map(sender => (
-                <li>{sender}</li>
+            { senders.map((sender, index) => (
+                <li key={index}>{sender}</li>
             ))}
         </ul>
     );
