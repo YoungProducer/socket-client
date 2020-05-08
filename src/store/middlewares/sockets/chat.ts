@@ -1,4 +1,5 @@
 import { Middleware, PayloadAction } from '@reduxjs/toolkit';
+
 import { Socket } from 'components/MessagesWatcher/Socket';
 import { Chat, setChatListAction } from 'store/slices/chat';
 import { RootState } from 'store/slices';
