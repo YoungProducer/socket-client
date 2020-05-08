@@ -13,7 +13,7 @@ module.exports = {
 
   globals: {
     "ts-jest": {
-      "tsConfig": "<rootDir>/jest.tsconfig.json",
+      "tsConfig": "<rootDir>/tsconfig.json",
       diagnostics: true,
     }
   },
@@ -27,18 +27,6 @@ module.exports = {
   moduleNameMapper: {
     '\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/src/__mocks__/files.ts',
     '^components(.*)$': '<rootDir>/src/components$1',
-    '^container(.*)$': '<rootDir>/src/container$1',
-    '^routes(.*)$': '<rootDir>/src/routes$1',
     '^store(.*)$': '<rootDir>/src/store$1',
-    '^public(.*)$': '<rootDir>/public$1',
-    '^types(.*)$': '<rootDir>/src/types$1',
-    '^utils(.*)$': '<rootDir>/src/utils$1',
-    '^modals(.*)$': '<rootDir>/src/modals$1',
-    '^api(.*)$': '<rootDir>/src/api$1',
-    '^img(.*)$': '<rootDir>/src/img$1',
-    '^constatns(.*)$': '<rootDir>/src/constants$1',
-    '^hooks(.*)$': '<rootDir>/src/hooks$1',
-    '^context(.*)$': '<rootDir>/src/context$1',
-    '^constants(.*)$': '<rootDir>/src/constants$1',
   }
 };
