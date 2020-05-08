@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { MessagesWatcher } from './components/MessagesWatcher';
-import { ChatList } from './components/ChatList';
+import { Chat } from './components/Chat';
 
 export const App = () => (
     <div>
         <MessagesWatcher />
-        <ChatList />
+        <Chat />
     </div>
 );
