@@ -20,6 +20,22 @@ export const emitSendMessage: EmitSendMessage = (message) =>
         });
     };
 
+type EmitCreateChat =
+    (receiverId: string) =>
+        (dispatch: Dispatch<any>, getState: () => RootState) =>
+            Promise<void>;
+
+export const emitCreateChat: EmitCreateChat = (receiverId) =>
+    async (dispatch, getState) => {
+        const state = getState();
+        const userId = state.chat.userId;
+
+        chatSocket.instance.emit(
+            'create-chat',
+            { userId, receiverId },
+        );
+    };
+
 export const initChatEvents = () =>
     async (dispatch: Dispatch<any>) => {
         chatSocket.instance.on(
