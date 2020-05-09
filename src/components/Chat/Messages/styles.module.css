@@ -1,0 +1,29 @@
+.messages {
+    width: 300px;
+}
+
+.message p {
+    min-width: 50px;
+    max-width: 100px;
+    border-radius: 4px;
+}
+
+.contactMessage {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.contactMessage p {
+    background-color: cadetblue;
+    text-align: right;
+}
+
+.userMessage {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.userMessage p {
+    background-color: cyan;
+    text-align: left;
+}

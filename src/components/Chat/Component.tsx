@@ -20,8 +20,15 @@ export const Chat = ({ chatList, joined }: ChatProps) => {
             {joined && (
                 <ChatList onChatClick={setReceiver} />
             )}
-            <Messages messages={messages} />
-            <SendMessage receiver={receiver} />
+            {receiver !== '' && (
+                <>
+                    <Messages
+                        messages={messages}
+                        contact={receiver}
+                    />
+                    <SendMessage receiver={receiver} />
+                </>
+            )}
         </div>
     );
 };
