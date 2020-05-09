@@ -4,6 +4,7 @@ import { ChatProps } from './container';
 import { ChatList } from './ChatList';
 import { ChatJoin } from './ChatJoin';
 import { Messages } from './Messages';
+import { SendMessage } from './SendMessage';
 
 export const Chat = ({ chatList }: ChatProps) => {
     const [sender, setSender] = useState<string>('');
@@ -18,6 +19,7 @@ export const Chat = ({ chatList }: ChatProps) => {
             <ChatList onChatClick={setSender} />
             <ChatJoin />
             <Messages messages={messages} />
+            <SendMessage receiver={sender} />
         </div>
     );
 };
