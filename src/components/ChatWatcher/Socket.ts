@@ -2,16 +2,25 @@ import io from 'socket.io-client';
 
 export namespace ChatSocket {
     export interface Message {
-        sender: string;
         receiver: string;
+        sender: string;
         body: string;
+    }
+
+    export interface UserMessage {
+        owner: string;
+        body: string;
+    }
+
+    export interface IncomingMessageData extends UserMessage {
+        contact: string;
     }
 
     export type MessageStatus = 'Sent!' | 'Received!';
 
     export interface IncomingMessage {
         status: MessageStatus;
-        data: Message;
+        data: IncomingMessageData;
     }
     export interface Controller {
         instance: SocketIOClient.Socket;

@@ -1,13 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+export interface UserMessage {
+    body: string;
+    owner: string;
+}
+
 export interface Chat {
     contact: string;
-    messages: string[];
+    messages: UserMessage[];
 }
 
 export namespace Chat {
     export interface Message {
         contact: string;
+        owner: string;
         body: string;
     }
 
@@ -61,7 +67,10 @@ const chat = createSlice({
                         if (chat.contact === payload.contact) {
                             return {
                                 ...chat,
-                                messages: [...chat.messages, payload.body],
+                                messages: [...chat.messages, {
+                                    body: payload.body,
+                                    owner: payload.owner,
+                                }],
                             };
                         }
 
@@ -76,7 +85,10 @@ const chat = createSlice({
                     ...state.chatList,
                     {
                         contact: payload.contact,
-                        messages: [payload.body],
+                        messages: [{
+                            body: payload.body,
+                            owner: payload.owner,
+                        }],
                     },
                 ],
             };

@@ -29,11 +29,6 @@ export const initChatEvents = () =>
                 const messageData = incomingMessage.data;
                 const messageStatus = incomingMessage.status;
 
-                dispatch(addMessageAction({
-                    contact: messageStatus === 'Sent!'
-                        ? messageData.receiver
-                        : messageData.sender,
-                    body: messageData.body,
-                }));
+                dispatch(addMessageAction(incomingMessage.data));
             });
     };
