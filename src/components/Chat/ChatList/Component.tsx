@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 
 export const ChatList = ({ senders, onChatClick }: ChatListProps) => {
     return (
-        <div>
+        <div className={styles.chatListWrapper}>
             <p>Chats list</p>
             <ul className={styles.chatList}>
                 {senders.map((sender, index) => (

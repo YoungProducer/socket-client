@@ -16,10 +16,10 @@ export const Chat = ({ chatList, joined }: ChatProps) => {
 
     return (
         <div>
+            <ChatJoin />
             {joined && (
                 <ChatList onChatClick={setReceiver} />
             )}
-            <ChatJoin />
             <Messages messages={messages} />
             <SendMessage receiver={receiver} />
         </div>
