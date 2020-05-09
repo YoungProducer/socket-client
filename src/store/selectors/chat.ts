@@ -5,3 +5,6 @@ export const selectSenders = (state: RootState) =>
 
 export const selectChatList = (state: RootState) =>
     state.chat.chatList;
+
+export const selectJoined = (state: RootState) =>
+    state.chat.joined;

@@ -17,6 +17,7 @@ export const ChatJoin = ({
 
     return (
         <div>
+            <p>Write your user name</p>
             <input
                 type='text'
                 value={userId}

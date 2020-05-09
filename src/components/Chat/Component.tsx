@@ -6,7 +6,7 @@ import { ChatJoin } from './ChatJoin';
 import { Messages } from './Messages';
 import { SendMessage } from './SendMessage';
 
-export const Chat = ({ chatList }: ChatProps) => {
+export const Chat = ({ chatList, joined }: ChatProps) => {
     const [receiver, setReceiver] = useState<string>('');
 
     const messages = useMemo(() => {
@@ -16,7 +16,9 @@ export const Chat = ({ chatList }: ChatProps) => {
 
     return (
         <div>
-            <ChatList onChatClick={setReceiver} />
+            {joined && (
+                <ChatList onChatClick={setReceiver} />
+            )}
             <ChatJoin />
             <Messages messages={messages} />
             <SendMessage receiver={receiver} />
