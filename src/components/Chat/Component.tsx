@@ -7,19 +7,19 @@ import { Messages } from './Messages';
 import { SendMessage } from './SendMessage';
 
 export const Chat = ({ chatList }: ChatProps) => {
-    const [sender, setSender] = useState<string>('');
+    const [receiver, setReceiver] = useState<string>('');
 
     const messages = useMemo(() => {
-        const chat = chatList.find(chat => chat.sender === sender);
+        const chat = chatList.find(chat => chat.contact === receiver);
         return chat ? chat.messages : [];
-    }, [sender, chatList]);
+    }, [receiver, chatList]);
 
     return (
         <div>
-            <ChatList onChatClick={setSender} />
+            <ChatList onChatClick={setReceiver} />
             <ChatJoin />
             <Messages messages={messages} />
-            <SendMessage receiver={sender} />
+            <SendMessage receiver={receiver} />
         </div>
     );
 };

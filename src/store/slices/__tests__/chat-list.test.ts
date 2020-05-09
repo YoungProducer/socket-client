@@ -1,5 +1,5 @@
 import {
-    chatListReducer,
+    chatReducer,
     addMessageAction,
     setChatListAction,
     joinAction,
@@ -12,17 +12,17 @@ describe('Chat List slice', () => {
             chatList: [],
         } as Chat.State;
 
-        const result = chatListReducer(
+        const result = chatReducer(
             initialState,
             setChatListAction([{
-                sender: 'foo',
+                contact: 'foo',
                 messages: ['123', '456'],
             }]),
         );
 
         expect(result.chatList).toHaveLength(1);
         expect(result.chatList).toEqual([{
-            sender: 'foo',
+            contact: 'foo',
             messages: ['123', '456'],
         }]);
     });
@@ -32,7 +32,7 @@ describe('Chat List slice', () => {
             chatList: [],
         } as Chat.State;
 
-        const result = chatListReducer(
+        const result = chatReducer(
             initialState,
             addMessageAction({
                 sender: 'foo',
@@ -42,7 +42,7 @@ describe('Chat List slice', () => {
 
         expect(result.chatList).toHaveLength(1);
         expect(result.chatList[0]).toEqual({
-            sender: 'foo',
+            contact: 'foo',
             messages: ['123'],
         });
     });
@@ -50,12 +50,12 @@ describe('Chat List slice', () => {
     test(`addMessageAction should add new message to messages array of specific chat`, () => {
         const initialState = {
             chatList: [{
-                sender: 'foo',
+                contact: 'foo',
                 messages: ['123'],
             }],
         } as Chat.State;
 
-        const result = chatListReducer(
+        const result = chatReducer(
             initialState,
             addMessageAction({
                 sender: 'foo',
@@ -71,7 +71,7 @@ describe('Chat List slice', () => {
             joined: false,
         } as Chat.State;
 
-        const result = chatListReducer(
+        const result = chatReducer(
             initialState,
             joinAction('foo'),
         );

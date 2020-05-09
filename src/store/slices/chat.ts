@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface Chat {
-    sender: string;
+    contact: string;
     messages: string[];
 }
 
@@ -52,13 +52,13 @@ const chat = createSlice({
             { payload }: PayloadAction<Chat.Message>,
         ) => {
             const isChatExist = state.chatList.some(chat =>
-                chat.sender === payload.sender);
+                chat.contact === payload.sender);
 
             if (isChatExist) {
                 return {
                     ...state,
                     chatList: state.chatList.map(chat => {
-                        if (chat.sender === payload.sender) {
+                        if (chat.contact === payload.sender) {
                             return {
                                 ...chat,
                                 messages: [...chat.messages, payload.body],
@@ -75,7 +75,7 @@ const chat = createSlice({
                 chatList: [
                     ...state.chatList,
                     {
-                        sender: payload.sender,
+                        contact: payload.sender,
                         messages: [payload.body],
                     },
                 ],
