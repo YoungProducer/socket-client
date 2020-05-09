@@ -2,6 +2,7 @@ import {
     chatReducer,
     addMessageAction,
     setChatListAction,
+    addChatAction,
     joinAction,
     Chat,
 } from '../chat';
@@ -16,14 +17,20 @@ describe('Chat List slice', () => {
             initialState,
             setChatListAction([{
                 contact: 'foo',
-                messages: ['123', '456'],
+                messages: [{
+                    body: '123',
+                    owner: 'foo',
+                }],
             }]),
         );
 
         expect(result.chatList).toHaveLength(1);
         expect(result.chatList).toEqual([{
             contact: 'foo',
-            messages: ['123', '456'],
+            messages: [{
+                body: '123',
+                owner: 'foo',
+            }],
         }]);
     });
 
@@ -35,7 +42,8 @@ describe('Chat List slice', () => {
         const result = chatReducer(
             initialState,
             addMessageAction({
-                sender: 'foo',
+                contact: 'foo',
+                owner: 'foo',
                 body: '123',
             }),
         );
@@ -43,7 +51,10 @@ describe('Chat List slice', () => {
         expect(result.chatList).toHaveLength(1);
         expect(result.chatList[0]).toEqual({
             contact: 'foo',
-            messages: ['123'],
+            messages: [{
+                owner: 'foo',
+                body: '123',
+            }],
         });
     });
 
@@ -51,14 +62,18 @@ describe('Chat List slice', () => {
         const initialState = {
             chatList: [{
                 contact: 'foo',
-                messages: ['123'],
+                messages: [{
+                    body: '123',
+                    owner: 'foo',
+                }],
             }],
         } as Chat.State;
 
         const result = chatReducer(
             initialState,
             addMessageAction({
-                sender: 'foo',
+                owner: 'foo',
+                contact: 'foo',
                 body: '456',
             }),
         );
