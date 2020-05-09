@@ -1,5 +1,16 @@
 .messages {
     width: 300px;
+    border: 2px solid #333;
+    padding: 8px;
+    margin-top: 8px;
+}
+
+.message {
+    margin-bottom: 4px;
+}
+
+.message:last-child {
+    margin-bottom: 0;
 }
 
 .message p {
