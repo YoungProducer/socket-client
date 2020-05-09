@@ -22,11 +22,18 @@ export const emitSendMessage: EmitSendMessage = (message) =>
 
 export const initChatEvents = () =>
     async (dispatch: Dispatch<any>) => {
-        chatSocket.instance.on('add-message-response', async (data: ChatSocket.Message) => {
-            console.log(data);
-            dispatch(addMessageAction({
-                sender: data.sender,
-                body: data.body,
-            }));
-        });
+        chatSocket.instance.on(
+            'add-message-response',
+            async (incomingMessage: ChatSocket.IncomingMessage,
+            ) => {
+                const messageData = incomingMessage.data;
+                const messageStatus = incomingMessage.status;
+
+                dispatch(addMessageAction({
+                    contact: messageStatus === 'Sent!'
+                        ? messageData.receiver
+                        : messageData.sender,
+                    body: messageData.body,
+                }));
+            });
     };

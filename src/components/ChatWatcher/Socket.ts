@@ -6,6 +6,13 @@ export namespace ChatSocket {
         receiver: string;
         body: string;
     }
+
+    export type MessageStatus = 'Sent!' | 'Received!';
+
+    export interface IncomingMessage {
+        status: MessageStatus;
+        data: Message;
+    }
     export interface Controller {
         instance: SocketIOClient.Socket;
         sendMessage: (message: Message) => void;
@@ -28,10 +35,6 @@ export class ChatSocket implements ChatSocket.Controller {
 
         this.instance.on('connect', () => {
             console.log('connected');
-        });
-
-        this.instance.on('add-message-response', (data: any) => {
-            console.log(data);
         });
     }
 

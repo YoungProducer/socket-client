@@ -7,7 +7,7 @@ export interface Chat {
 
 export namespace Chat {
     export interface Message {
-        sender: string;
+        contact: string;
         body: string;
     }
 
@@ -52,13 +52,13 @@ const chat = createSlice({
             { payload }: PayloadAction<Chat.Message>,
         ) => {
             const isChatExist = state.chatList.some(chat =>
-                chat.contact === payload.sender);
+                chat.contact === payload.contact);
 
             if (isChatExist) {
                 return {
                     ...state,
                     chatList: state.chatList.map(chat => {
-                        if (chat.contact === payload.sender) {
+                        if (chat.contact === payload.contact) {
                             return {
                                 ...chat,
                                 messages: [...chat.messages, payload.body],
@@ -75,7 +75,7 @@ const chat = createSlice({
                 chatList: [
                     ...state.chatList,
                     {
-                        contact: payload.sender,
+                        contact: payload.contact,
                         messages: [payload.body],
                     },
                 ],
