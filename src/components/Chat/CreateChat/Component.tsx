@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 
 import { CreateChatProps } from './container';
+import styles from './styles.module.css';
 
 export const CreateChat = ({ emitCreateChat }: CreateChatProps) => {
     const [contact, setContact] = useState<string>('');
@@ -20,7 +21,7 @@ export const CreateChat = ({ emitCreateChat }: CreateChatProps) => {
     }, [contact, emitCreateChat, toggleCreate]);
 
     return (
-        <div>
+        <div className={styles.createChatWrapper}>
             {create && (
                 <div>
                     <p>Enter name of contact</p>
