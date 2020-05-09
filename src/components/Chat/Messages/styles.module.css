@@ -6,6 +6,7 @@
     min-width: 50px;
     max-width: 100px;
     border-radius: 4px;
+    padding: 4px 8px;
 }
 
 .contactMessage {
@@ -16,6 +17,7 @@
 .contactMessage p {
     background-color: cadetblue;
     text-align: right;
+    color: #fff;
 }
 
 .userMessage {
