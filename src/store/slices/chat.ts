@@ -18,7 +18,7 @@ export namespace Chat {
     }
 
     export type SetChatsPayload = Chat[];
-    export type AddChatPayload = Chat[];
+    export type AddChatPayload = Chat;
     export type AddMessagePayload = Message;
     export type JoinPayload = string;
 

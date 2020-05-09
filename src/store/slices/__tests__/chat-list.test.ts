@@ -94,4 +94,23 @@ describe('Chat List slice', () => {
         expect(result.joined).toBeTruthy();
         expect(result.userId).toBe('foo');
     });
+
+    test(`addChatAction should add new element to chatList array`, () => {
+        const initialState = {
+            chatList: [{
+                contact: 'foo',
+                messages: [],
+            }],
+        } as Chat.State;
+
+        const result = chatReducer(
+            initialState,
+            addChatAction({
+                contact: 'abc',
+                messages: [],
+            }),
+        );
+
+        expect(result.chatList).toHaveLength(2);
+    });
 });
