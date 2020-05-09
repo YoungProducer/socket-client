@@ -1,19 +1,20 @@
 import io from 'socket.io-client';
 
-interface Message {
-    sender: string;
-    receiver: string;
-    body: string;
+export namespace ChatSocket {
+    export interface Message {
+        sender: string;
+        receiver: string;
+        body: string;
+    }
+    export interface Controller {
+        instance: SocketIOClient.Socket;
+        sendMessage: (message: Message) => void;
+        unsubscribe: (userId: string) => void;
+        disconnect: () => void;
+    }
 }
 
-interface ChatSocketController {
-    instance: SocketIOClient.Socket;
-    sendMessage: (message: Message) => void;
-    unsubscribe: (userId: string) => void;
-    disconnect: () => void;
-}
-
-export class ChatSocket implements ChatSocketController {
+export class ChatSocket implements ChatSocket.Controller {
     public instance: SocketIOClient.Socket;
 
     constructor() {
@@ -34,7 +35,7 @@ export class ChatSocket implements ChatSocketController {
         this.instance.emit('join', { userId });
     }
 
-    sendMessage(message: Message) {
+    sendMessage(message: ChatSocket.Message) {
         this.instance.emit('add-message', message);
     }
 
