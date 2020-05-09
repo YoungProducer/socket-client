@@ -5,6 +5,7 @@ import { ChatList } from './ChatList';
 import { ChatJoin } from './ChatJoin';
 import { Messages } from './Messages';
 import { SendMessage } from './SendMessage';
+import { CreateChat } from './CreateChat';
 
 export const Chat = ({ chatList, joined }: ChatProps) => {
     const [receiver, setReceiver] = useState<string>('');
@@ -18,7 +19,10 @@ export const Chat = ({ chatList, joined }: ChatProps) => {
         <div>
             <ChatJoin />
             {joined && (
-                <ChatList onChatClick={setReceiver} />
+                <>
+                    <ChatList onChatClick={setReceiver} />
+                    <CreateChat />
+                </>
             )}
             {receiver !== '' && (
                 <>
