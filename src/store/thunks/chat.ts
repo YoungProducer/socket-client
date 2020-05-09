@@ -2,7 +2,7 @@ import { Dispatch } from '@reduxjs/toolkit';
 
 import { chatSocket, ChatSocket } from 'components/ChatWatcher/Socket';
 import { RootState } from 'store/slices';
-import { addMessageAction } from 'store/slices/chat';
+import { addMessageAction, setChatListAction, Chat } from 'store/slices/chat';
 
 type EmitSendMessage =
     (message: Omit<ChatSocket.Message, 'sender'>) =>
@@ -24,11 +24,14 @@ export const initChatEvents = () =>
     async (dispatch: Dispatch<any>) => {
         chatSocket.instance.on(
             'add-message-response',
-            async (incomingMessage: ChatSocket.IncomingMessage,
-            ) => {
+            async (incomingMessage: ChatSocket.IncomingMessage) => {
                 const messageData = incomingMessage.data;
                 const messageStatus = incomingMessage.status;
 
                 dispatch(addMessageAction(incomingMessage.data));
             });
+
+        chatSocket.instance.on('chat-list-response', (data: Chat[]) => {
+            dispatch(setChatListAction(data));
+        });
     };

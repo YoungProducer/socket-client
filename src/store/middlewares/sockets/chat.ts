@@ -19,10 +19,6 @@ export const chatMiddleware: Middleware =
                     const state: RootState = store.getState();
 
                     chatSocket.chatList(state.chat.userId);
-
-                    chatSocket.instance.on('chat-list-response', (data: Chat[]) => {
-                        store.dispatch(setChatListAction(data));
-                    });
                 }
             });
 
