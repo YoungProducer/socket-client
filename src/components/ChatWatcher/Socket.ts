@@ -37,9 +37,6 @@ export class ChatSocket implements ChatSocket.Controller {
         this.instance = io('http://localhost:4000', {
             transports: ['websocket'],
             upgrade: false,
-            query: {
-                userId: 'foo',
-            },
         });
 
         this.instance.on('connect', () => {
