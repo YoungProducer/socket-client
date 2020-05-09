@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 
-import { ChatSocket } from './Socket';
+import { chatSocket } from './Socket';
 
 export const ChatWatcher = (): null => {
 
     useEffect(() => {
-        const socket = new ChatSocket();
+        chatSocket.connect();
 
         return () => {
-            socket.disconnect();
+            chatSocket.disconnect();
         };
     }, []);
 

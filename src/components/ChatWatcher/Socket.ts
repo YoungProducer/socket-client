@@ -15,9 +15,9 @@ export namespace ChatSocket {
 }
 
 export class ChatSocket implements ChatSocket.Controller {
-    public instance: SocketIOClient.Socket;
+    public instance!: SocketIOClient.Socket;
 
-    constructor() {
+    connect() {
         this.instance = io('http://localhost:4000', {
             transports: ['websocket'],
             upgrade: false,
@@ -28,6 +28,10 @@ export class ChatSocket implements ChatSocket.Controller {
 
         this.instance.on('connect', () => {
             console.log('connected');
+        });
+
+        this.instance.on('add-message-response', (data: any) => {
+            console.log(data);
         });
     }
 
@@ -51,3 +55,5 @@ export class ChatSocket implements ChatSocket.Controller {
         this.instance.disconnect();
     }
 }
+
+export const chatSocket = new ChatSocket();

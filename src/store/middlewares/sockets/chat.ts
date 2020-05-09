@@ -1,25 +1,26 @@
 import { Middleware, PayloadAction } from '@reduxjs/toolkit';
 
-import { ChatSocket } from 'components/ChatWatcher/Socket';
+import { chatSocket } from 'components/ChatWatcher/Socket';
 import { Chat, setChatListAction } from 'store/slices/chat';
 import { RootState } from 'store/slices';
-
-const socket = new ChatSocket();
+import { initChatEvents } from 'store/thunks/chat';
 
 export const chatMiddleware: Middleware =
     (store) => (next) => async (action: PayloadAction<Chat.JoinPayload>) => {
         next(action);
 
         if (action.type === 'Chat/joinAction') {
-            socket.join(action.payload);
+            chatSocket.join(action.payload);
 
-            socket.instance.on('join-response', (data: { status: string }) => {
+            chatSocket.instance.on('join-response', (data: { status: string }) => {
                 if (data.status === 'Success!') {
+                    store.dispatch(initChatEvents() as any);
+
                     const state: RootState = store.getState();
 
-                    socket.chatList(state.chat.userId);
+                    chatSocket.chatList(state.chat.userId);
 
-                    socket.instance.on('chat-list-response', (data: Chat[]) => {
+                    chatSocket.instance.on('chat-list-response', (data: Chat[]) => {
                         store.dispatch(setChatListAction(data));
                     });
                 }
